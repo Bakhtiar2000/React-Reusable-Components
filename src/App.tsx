@@ -1,10 +1,11 @@
 import MainLayout from "./components/layout/MainLayout";
+import Container from "./components/ui/Container";
 
 function App() {
   return (
-    <div className="h-full w-full max-w-7xl mx-auto bg-purple-100">
+    <Container>
       <MainLayout />
-    </div>
+    </Container>
   );
 }
 
