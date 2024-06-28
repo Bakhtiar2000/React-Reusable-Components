@@ -1,0 +1,12 @@
+/* Custom class for base tags to apply css automatically whenever called */
+@layer base {
+  h1 {
+    @apply text-4xl text-red-700;
+  }
+  h2 {
+    @apply text-3xl text-red-700;
+  }
+  h3 {
+    @apply text-2xl text-red-700;
+  }
+}
