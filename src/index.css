@@ -1,5 +1,6 @@
 @import "./styles/Button.css"; /* must use semi-colon */
 @import "./styles/Typography.css";
+@import "./styles/Form.css";
 
 @tailwind base;
 @tailwind components;

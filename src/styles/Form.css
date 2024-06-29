@@ -1,0 +1,28 @@
+/* This css is styling every form input in the project with the css inside select area */
+
+@layer base {
+  [type="text"],
+  input:where(:not([type])),
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply w-full border border-gray-200 focus:border-purple-500 rounded focus:ring-1 focus:ring-purple-500;
+  }
+
+  /* This part is specifically for checkbox and radio type */
+  [type="checkbox"],
+  [type="radio"] {
+    @apply border rounded border-gray-500 checked:bg-purple-500 hover:bg-purple-500 text-purple-500 focus:border-purple-500 focus:ring-1 focus:ring-purple-500;
+  }
+}
