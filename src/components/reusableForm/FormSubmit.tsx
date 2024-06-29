@@ -2,9 +2,10 @@ import { useContext } from "react";
 import Cn from "../../utils/Cn";
 import Button from "../ui/Button";
 import { FormElementContext } from "./Form";
+import { TFormElementContext } from "../../types";
 
 export const FormSubmit = () => {
-  const { double } = useContext(FormElementContext);
+  const { double } = useContext(FormElementContext) as TFormElementContext;
   return (
     <div
       className={Cn("grid grid-cols-1 justify-items-center gap-5 my-8", {

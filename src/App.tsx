@@ -75,9 +75,20 @@ function App() {
       {/* <NormalForm></NormalForm> */}
 
       <Form
-        double={true}
+        double={false}
         onSubmit={handleSubmit(onSubmit) as SubmitHandler<FieldValues>}
       >
+        {/* <div className="w-full max-w-md">
+          <label className="block" htmlFor="test">
+            Test
+          </label>
+          <input type="text" id="test" {...register("test")} />
+          {errors?.test && (
+            <span className="text-xs text-red-500">
+              {errors?.test?.message}
+            </span>
+          )}
+        </div> */}
         <FormSection>
           <Input
             label="Name"

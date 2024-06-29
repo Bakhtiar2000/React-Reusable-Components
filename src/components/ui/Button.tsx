@@ -1,16 +1,6 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, forwardRef } from "react";
+import { forwardRef } from "react";
 import Cn from "../../utils/Cn";
-
-type TRef = HTMLButtonElement;
-type TVariant = "solid" | "ghost" | "outline";
-type TButtonOptions = {
-  variant?: TVariant;
-};
-type TButton = DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> &
-  TButtonOptions;
+import { TButton, TRef, TVariant } from "../../types";
 
 const Button = forwardRef<TRef, TButton>(
   ({ className, variant = "solid", children, ...rest }, ref) => {

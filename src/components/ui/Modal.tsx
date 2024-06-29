@@ -1,25 +1,8 @@
-import {
-  MouseEvent,
-  ReactNode,
-  createContext,
-  useContext,
-  useRef,
-} from "react";
+import { MouseEvent, createContext, useContext, useRef } from "react";
 import Cn from "../../utils/Cn";
 import { createPortal } from "react-dom";
+import { TCloseButton, THeader, TModal, TModalContext } from "../../types";
 
-type TModal = {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
-};
-type TModalContext = {
-  onClose: () => void;
-};
-type TCloseButton = {
-  children?: ReactNode;
-};
-type THeader = TCloseButton;
 const ModalContext = createContext<TModalContext | null>(null);
 const Modal = ({ isOpen, onClose, children }: TModal) => {
   const containerRef = useRef<HTMLDivElement>(null);
