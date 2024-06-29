@@ -1,21 +1,40 @@
+import { ButtonHTMLAttributes, DetailedHTMLProps, forwardRef } from "react";
 import Cn from "../../utils/Cn";
 
-const Button = ({ className, variant, outline }) => {
-  return (
-    <button
-      className={Cn(
-        "bg-red-500 px-3 py-2 rounded-md",
-        {
-          "border border-purple-500 bg-opacity-10 hover:bg-purple-500 hover:text-white duration-300":
-            outline,
-        },
-        className
-      )}
-    >
-      Click
-    </button>
-  );
+type TRef = HTMLButtonElement;
+type TVariant = "solid" | "ghost" | "outline";
+type TButtonOptions = {
+  variant?: TVariant;
 };
+type TButton = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> &
+  TButtonOptions;
+
+const Button = forwardRef<TRef, TButton>(
+  ({ className, variant, children, ...rest }, ref) => {
+    const getVariant = (variant: TVariant) => {
+      switch (variant) {
+        case "outline":
+          return "btn-outline";
+        case "ghost":
+          return "btn-ghost";
+        default:
+          return "btn-solid";
+      }
+    };
+    return (
+      <button
+        {...rest}
+        ref={ref}
+        className={Cn(getVariant(variant as TVariant), className)}
+      >
+        {children}
+      </button>
+    );
+  }
+);
 
 export default Button;
 
