@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 import Button from "./components/ui/Button";
 import Container from "./components/ui/Container";
 import Modal from "./components/ui/Modal";
-import NormalForm from "./normalForm/NormalForm";
+import NormalForm from "./components/normalForm/NormalForm";
 
 function App() {
   const [modal, setModal] = useState(false);

@@ -83,7 +83,7 @@ const Header = ({ children }: THeader) => {
   );
 };
 
-Modal.Header = Header;
-Modal.CloseButton = CloseButton;
+Modal.Header = Header; // Compound pattern
+Modal.CloseButton = CloseButton; // Compound pattern
 
 export default Modal;
