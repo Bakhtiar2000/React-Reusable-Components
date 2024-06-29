@@ -13,7 +13,8 @@ type TButton = DetailedHTMLProps<
   TButtonOptions;
 
 const Button = forwardRef<TRef, TButton>(
-  ({ className, variant, children, ...rest }, ref) => {
+  ({ className, variant = "solid", children, ...rest }, ref) => {
+    // Default variant is solid
     const getVariant = (variant: TVariant) => {
       switch (variant) {
         case "outline":

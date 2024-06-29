@@ -3,17 +3,33 @@ import { FormEvent, useState } from "react";
 import Button from "./components/ui/Button";
 import Container from "./components/ui/Container";
 import Modal from "./components/ui/Modal";
-import NormalForm from "./components/normalForm/NormalForm";
+import {
+  Form,
+  FormSection,
+  FormSubmit,
+  Input,
+} from "./components/reusableForm";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { TNormalForm } from "./components/normalForm/Validation";
 
 function App() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<TNormalForm>();
   const [modal, setModal] = useState(false);
   const handleModal = () => {
     setModal((prev) => !prev);
   };
-  const handleSubmit = (e: FormEvent) => {
+  const handleModalFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("Clicked");
   };
+  const onSubmit = (data: FieldValues) => {
+    console.log(data);
+  };
+
   return (
     <Container>
       {/* <MainLayout />
@@ -30,7 +46,7 @@ function App() {
           <h3>Modal Title</h3>
           <Modal.CloseButton></Modal.CloseButton>
         </Modal.Header>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleModalFormSubmit}>
           <div className="flex items-center gap-5 mb-3">
             <label htmlFor="email">Email</label>
             <input
@@ -56,7 +72,34 @@ function App() {
         </form>
       </Modal>
 
-      <NormalForm></NormalForm>
+      {/* <NormalForm></NormalForm> */}
+
+      <Form
+        double={true}
+        onSubmit={handleSubmit(onSubmit) as SubmitHandler<FieldValues>}
+      >
+        <FormSection>
+          <Input
+            label="Name"
+            type="text"
+            register={register("name")}
+            errors={errors}
+          />
+          <Input
+            label="Email"
+            type="email"
+            register={register("email")}
+            errors={errors}
+          />
+          <Input
+            label="Password"
+            type="password"
+            register={register("password")}
+            errors={errors}
+          />
+        </FormSection>
+        <FormSubmit></FormSubmit>
+      </Form>
     </Container>
   );
 }
